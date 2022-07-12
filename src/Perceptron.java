@@ -36,12 +36,7 @@ public class Perceptron {
         double error;
         while (counter<this.xTrain.length){
             y = summation(xTrain[counter]);
-
-            if(y  >= 0){
-                y = 1;
-            }else{
-                y = -1;
-            }
+            y = activationFunction(y);
 
             error = this.yD[counter] - y;
 
@@ -63,13 +58,22 @@ public class Perceptron {
             double y = summation(x);
             y = activationFunction(y);
             if(y == 1){
-                System.out.println(Arrays.toString(x)+" : Iris-setosa");
+                System.out.println("[Evaluation] " + Arrays.toString(x)+" : Iris-setosa");
             }else{
-                System.out.println(Arrays.toString(x)+" : Iris-versicolor");
+                System.out.println("[Evaluation] " +Arrays.toString(x)+" : Iris-versicolor");
             }
 
         }
     }
 
+    public void evaluateInput(double[] test){
+        double y = summation(test);
+        y = activationFunction(y);
+        if(y == 1){
+            System.out.println(Arrays.toString(test)+" : Iris-setosa");
+        }else{
+            System.out.println(Arrays.toString(test)+" : Iris-versicolor");
+        }
+    }
 
 }

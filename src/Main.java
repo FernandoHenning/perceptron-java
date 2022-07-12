@@ -3,6 +3,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args)  {
@@ -13,6 +14,21 @@ public class Main {
         Perceptron perceptron = new Perceptron(4,x,xTest,yD);
         perceptron.train();
         perceptron.evaluate();
+
+        Scanner in = new Scanner(System.in);
+        System.out.println("User input");
+        System.out.println("X1: ");
+        double x1 = in.nextDouble();
+        System.out.println("X2: ");
+        double x2 = in.nextDouble();
+        System.out.println("X3: ");
+        double x3 = in.nextDouble();
+        System.out.println("X4: ");
+        double x4 = in.nextDouble();
+
+        double[] userInput = { x1,x2,x3,x4 };
+        perceptron.evaluateInput(userInput);
+
     }
 
     static int[] getYD(int yIndex, int fileSize, String category1,String category2) {
